@@ -18,16 +18,17 @@ ld math_tools::pi_func(ld var, ld lower, ld upper) {
 }
 
 //specific math formulae, real interesting
-float math_tools::quad_series(vector<float>S, int posn) {
+float math_tools::get_nth(vector<float>S, int posn) {
     //can I return a string that has certain variables embedded in it?
     float α = S[1] - S[0];
     float β = S[2] - S[1];
     float γ = β - α;
     //nth term: S[0] + ∑ γx + α-γ
     int sum = 0;
+    // such loops will likely increase depending on the magnitude of the series. such a problem could be solved with recursion (in polynomial time), at least in the short term
     for(int i = 1; i < posn; i++)
-        sum += float((γ * i) + α - γ);
-    return float(S[0]+sum);
+        sum += float(γ * i);
+    return float(S[0]+sum+((α-γ)*(posn-1))); //refactiring the sum to S[0] + ∑ (γx) + (α-γ)(n-1)
 }
 
 float math_tools::parr_res(vector<float>Ω) {

@@ -13,6 +13,6 @@ public:
     long double sigma_func(long double var, long double lower, long double upper);
     long double pi_func(long double var, long double lower, long double upper);
     float parr_res(vector<float>Ω);
-    float quad_series(vector<float>S, int posn); //_complex base_sequence[]?
+    float get_nth(vector<float>S, int posn); //_complex base_sequence[]?
 };
 #endif

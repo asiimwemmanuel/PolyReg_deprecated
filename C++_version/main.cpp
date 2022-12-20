@@ -40,9 +40,10 @@ int main() {
             scanf("%f", &temp_input);
             quad_series.push_back(temp_input);
         }
-        printf("\nnth term:\n%.4f + ∑ %.4fx ", quad_series[0], quad_series[2] - (2*quad_series[1]) - quad_series[0]); //b/c I can't use variables defined in a function
-        (2*(-1*quad_series[0])-quad_series[2]-quad_series[1] >= 0) ? printf("+ "):printf("- ");
-        printf("%.4f (from x = 1 to x = n-1)\n", abs(2*(-1*quad_series[0])-quad_series[2]-quad_series[1]));
+        // all variables used below are defined in the function, and are therefore expanded below
+        printf("\nnth term:\n%.4f + ∑ %.4fx ", quad_series[0], (quad_series[2]-(2*quad_series[1])+quad_series[0])); // b/c I can't use variables defined in the function
+        (((3*quad_series[1])-(2*quad_series[0])-quad_series[2]) >= 0) ? printf("+ "):printf("- "); // if α-γ >= 0, fixing the refactor
+        printf("%.4f (from x = 1 to x = n-1)\n", abs((3*quad_series[1])-(2*quad_series[0])-quad_series[2])); // fixing the refactor again
         printf("\nInput '0' to exit the program\n");
         int choice = 1;
         while(choice != 0) {
@@ -50,7 +51,7 @@ int main() {
             scanf("%d", &choice);
             if(choice == 0)
                 break;
-            test_1.quad_series(quad_series, choice);
+            printf("%.4f\n", test_1.get_nth(quad_series, choice));
         }
         printf("program terminated\n");
     }

@@ -1,4 +1,4 @@
-# this program is to automate the analysis of quadratic series
+this program is to automate the analysis of quadratic series
 # It will be succeeded with a program analysing sereies of varying orders, not just quadratic
 
 # general formula (by me);

@@ -1,72 +1,76 @@
-//this program mainly implements two functions:
-
-// 1. ANALYSIS OF QUADRATIC SERIES*
-// * to be soon succeeded by a program analysing series of varying orders, not just quadratic
-
-// general formula (by me);
-// for terms a, b, c in series with differences α for (a and b) and β (b and c) respectively, with the constant difference between α and β being γ,
-// formally,
-//     α = b-a
-//     β = c-b
-//     γ = β - α
-// nth term = first_term + summation of (γx + α - γ) from x = 1 to x = n-1
-
-// 2. ANALYSIS OF RESISTANCE IN PARALLEL
-
-// general formula;
-// for n resistors in parallel circuit, the reciprocal of the total resistance (1/Ωt) is the sum of the recciprocals of all constituting resistors
-// formally,
-//     (1/Ωt) = (1/Ω1) + (1/Ω2) + (1/Ω3) + ... + (1/Ωn)
-// total_resistance = summation of (1/Ωx) from x = 1 to x = n
-//NOTE: the idea of multiplying a number n by (1/n^2) helps in the implementation of analysis 2.
-
 #include "math_tools.h"
-#include <string.h>
+
 typedef long double ld;
 
 int main() {
-    system("CLS");
-    printf("Quadratic series analysis or Parallel resistors analysis? (Q/P): ");
-    char c; //sam is not paying attention
-    scanf("%c",&c);
-    c = toupper(c);
-    if(c == 'Q') {
-        math_tools test_1;
-        vector<float>quad_series;
-        printf("Input the first 3 terms in quadratic series\n");
+    cout << "\n-----------------------------------------------------------------------------------------------------------------------------\n";
+    cout << "\nThis program is meant to contain all my math functions and theorems I have compiled over the months.\n";
+    cout << "It features:\n  1. A quadratic series analyser that can find the nth term in any real quadratic progression.\n  2. A parallel resistance analyser that can accurately calculate total parallel resistance via the law pertaining to the above\n";
+    cout << "\nNOTE: If you wish to run the program again, simply click it again in file explorer or run it from the terminal\n\n";
+    cout << "-----------------------------------------------------------------------------------------------------------------------------\n";
+    cout << "\n:: Would you like to carry out Quadratic series analysis or Parallel resistors analysis?\n     Input 'Q' or 'P' respectively: ";
+    char choice;
+    cin >> choice;
+    choice = toupper(choice);
+
+    if(choice == 'Q') {
+
+        // --------------------------------------input--------------------------------------
+        math_tools test_quad;
+        vector<ld> quad_series(3);
+        cout << "\n:: Input the first 3 terms in quadratic series:\n"; 
         for(int i = 0; i < 3; i++) {
-            float temp_input;
-            printf("Term %d: ", i+1);
-            scanf("%f", &temp_input);
-            quad_series.push_back(temp_input);
+            cout << "  > Term " << i+1 << ": ";
+            cin >> quad_series[i];
         }
-        // all variables used below are defined in the function, and are therefore expanded below
-        printf("\nnth term:\n%.4f + ∑ %.4fx ", quad_series[0], (quad_series[2]-(2*quad_series[1])+quad_series[0])); // b/c I can't use variables defined in the function
-        (((3*quad_series[1])-(2*quad_series[0])-quad_series[2]) >= 0) ? printf("+ "):printf("- "); // if α-γ >= 0, fixing the refactor
-        printf("%.4f (from x = 1 to x = n-1)\n", abs((3*quad_series[1])-(2*quad_series[0])-quad_series[2])); // fixing the refactor again
-        printf("\nInput '0' to exit the program\n");
-        int choice = 1;
-        while(choice != 0) {
-            printf("Which term would you like to find?: ");
-            scanf("%d", &choice);
-            if(choice == 0)
+        // ----------------------------------------------------------------------------------
+        
+        // The variables decalred below b/c I can't use the variables declared in the function & don't want jargonish printf() parameters
+        // Alternative: could make them attrubutes of the class and call them with test_quad
+        ld test_α = quad_series[1] - quad_series[0];
+        ld test_β = quad_series[2] - quad_series[1];
+        ld test_x = test_β - test_α;
+
+        // ----------------------printing standard generalisation----------------------------
+        cout << "\n:: Nth term:\n    " << quad_series[0] << " + summation of (" << test_x << "x ";
+        (test_α-test_x >= 0) ? cout << "+ " : cout <<  "- ";
+        cout << abs(test_α-test_x) <<  ") from x = 1 to n-1\n"; 
+        // ----------------------------------------------------------------------------------
+
+        // --------------------------------continuous prompts--------------------------------
+        cout << "\n:: Input '0' to exit the program\n";
+        int posn_to_find = 1;
+        while(posn_to_find > 0) {
+            cout << "    Which term would you like to find?: "; 
+            cin >> posn_to_find;
+            if(posn_to_find == 0)
                 break;
-            printf("%.4f\n", test_1.get_nth(quad_series, choice));
-        }
-        printf("program terminated\n");
+            cout << "  > Term " << posn_to_find << ": " << test_quad.get_quad_nth_v0(quad_series, posn_to_find) << "\n";
+        };
+        cout << "\n:: program terminated\n";
+        // ----------------------------------------------------------------------------------
     }
-    else if(c == 'P') {
-        math_tools test_2;
-        printf("How many resistors in parallel?: ");
-        int n;
-        scanf("%d", &n);
-        vector<float> res(n);
-        printf("Input the Ω of each resistor:\n");
-        for(int i = 0; i < n; i++) {
-            printf("Resistor %d: ", i+1);
-            scanf("%f", &res[i]);
+
+    else if(choice == 'P') {
+
+        // --------------------------------------input--------------------------------------
+        math_tools test_res;
+        cout << "\n:: Input '0' to exit the program\n\n";
+        int n = 1;
+        while(n > 0) {
+            cout << ":: How many resistors in parallel?: ";
+            cin >> n;
+            vector<ld> res(n);
+            cout << "\n:: Input the resistance of each resistor:\n";
+            for(int i = 0; i < n; i++) {
+                cout << "  > Resistor " << i+1 << ": ";
+                cin >> res[i];
+            }
+            cout << "\n:: Total resistance: " << test_res.parr_res_v0(res) << "\n\n";
         }
-        printf("Total resistance in parallel: %f\n", test_2.parr_res(res));
+        cout << "\n:: program terminated\n";
+        // ----------------------------------------------------------------------------------
+        
     }
     return 0;
 }

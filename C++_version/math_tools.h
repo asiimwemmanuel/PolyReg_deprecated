@@ -1,18 +1,15 @@
-//declare (not define) all universal entities
-#include<iostream>
-#include<math.h>
-#include<vector>
-// #include<string>
-using namespace std;
-#ifndef math_tools_h
-#define math_tools_h
+#include <iostream>
+#include <math.h>
+#include <vector>
 
-//remember to include complex or irrational numbers in the code
+#ifndef math_tools_h // makes sure math_tools_h is defined
+#define math_tools_h
+#endif // not right after #define b/c unsure about preprocessor directives
+
+using namespace std;
+
 class math_tools {
 public:
-    long double sigma_func(long double var, long double lower, long double upper);
-    long double pi_func(long double var, long double lower, long double upper);
-    float parr_res(vector<float>Ω);
-    float get_nth(vector<float>S, int posn); //_complex base_sequence[]?
+    long double get_quad_nth_v0(vector<long double>S, int posn); // check documentation to find compatibility with non-naturals ie. vector<_complex>S
+    long double parr_res_v0(vector<long double>Ω);
 };
-#endif

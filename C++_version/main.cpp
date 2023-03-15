@@ -7,7 +7,7 @@ int main() {
     cout << "\nThis program is meant to contain all my math functions and theorems I have compiled over the months.\n";
     cout << "It features:\n  1. A quadratic series analyser that can find the nth term in any real quadratic progression.\n  2. A parallel resistance analyser that can accurately calculate total parallel resistance via the law pertaining to the above\n";
     cout << "\nNOTE: If you wish to run the program again, simply click it again in file explorer or run it from the terminal\n\n";
-    cout << "-----------------------------------------------------------------------------------------------------------------------------\n";
+    cout << "\n-----------------------------------------------------------------------------------------------------------------------------\n";
     cout << "\n:: Would you like to carry out Quadratic series analysis or Parallel resistors analysis?\n     Input 'Q' or 'P' respectively: ";
     char choice;
     cin >> choice;

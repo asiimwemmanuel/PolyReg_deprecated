@@ -3,7 +3,6 @@
 This project is to modularize my math functions and formulae, specifically resistance in parallel and the general formula for quadratic sequences.
 
 Languages used: C++, Python
-NOTE: The python version is incomplete
 Resources: Reference notes and attached documentation
 
 2:09 AM 20/12/22
@@ -30,3 +29,15 @@ General formula;
 For n resistors in parallel connection, the total resistance is the reciprocal of the sum of the reciprocals of the resistors
 formally,
     Ωt = 1/(∑ (1/Ωx) from x = 1 to x = n)
+
+11:52 AM 20/03/2023
+
+Investigate the difference in rounding & display errors between cppver & pyver (through very precise progressions with differences of 10^-8 *arbitrarily*), as well as how C++20 automatically rounds off doubles, and find a way to apply the same for Python.
+
+Also look to fix variable duplication, and managing the math_tools class.
+
+OPEN RESEARCH POINT: What else should the class include, other than progession-related tools?
+
+Focus on how to get the best out of each language (through a .json file or an API) for the most optimal (if ever needed) math-toolbox.
+
+Also compare the correct formula in the eqtn-ref branch with the control, and the limitations (eg. managing reducing progressions) of each.

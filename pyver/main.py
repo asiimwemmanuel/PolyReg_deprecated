@@ -1,4 +1,4 @@
-import math_tools as math_tools
+import math_tools
 
 print("\n-----------------------------------------------------------------------------------------------------------------------------")
 print("\nThis program is meant to contain all my math functions and theorems I have compiled over the months.")
@@ -24,7 +24,7 @@ if choice == 'Q':
     test_x = test_β - test_α
     
     # ----------------------printing standard generalisation----------------------------
-    print(f"\n:: Nth term:\n    {quad_series[0]} + summation of ({test_x}x {'+' if test_α-test_x >= 0 else '-'} {abs(test_α-test_x)}) from x = 1 to n-1")
+    print(f"\n:: Nth term:\n    {quad_series[0]:.2f} + summation of ({test_x:.2f}x {'+' if test_α-test_x >= 0 else '-'} {abs(test_α-test_x):.2f}) from x = 1 to n-1")
     # ----------------------------------------------------------------------------------
 
     # --------------------------------continuous prompts--------------------------------

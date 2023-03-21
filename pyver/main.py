@@ -11,7 +11,7 @@ if choice == 'Q':
 
     # --------------------------------------input--------------------------------------
     test_quad = math_tools.my_math()
-    print("\n:: Input the first 3 terms in quadratic series:")
+    print(":: Input the first 3 terms in quadratic series:")
     quad_series = []
     for i in range(3): # map and split method
         quad_series.append(float(input(f"  > Term {i+1}: ")))

@@ -1,5 +1,5 @@
 <style>
-	p, li {font-size: 20px;}
+	/* p, li {font-size: 20px;} */
 	img {width: 33.333%;}
 	h2 {text-align: center; font-family: MV Boli;}
 </style>
@@ -8,9 +8,9 @@
 
 This project is to modularize my math functions and formulae, specifically *resistance in parallel* and the *general formula for quadratic sequences*.
 
-**Go to bottom for documentation**
+**Go to ./theory/theory_v1 for documentation**
 
-<p style="font-family: consolas;">Languages used: C++23, Python3</p>
+<p style="font-family: consolas; font-size: 20px;">Languages used: C++23, Python3</p>
 
 ## Resources
 	- Abbott: Understanding Analysis
@@ -75,22 +75,3 @@ Note: These have been termed "oscillating" since the table of differences is (su
 In the example, the first array of differences goes between 2 and 0. The inferred array goes between -2 and +2. The next between +4 and -4. The next between -8 and +8. (Note the order of the variables). The next array shall have terms that are twice as large as the previous.
 
 <p style="text-align: center;">Further investigation is required. </p>
-
-<br/>
-
-# DOCUMENTATION
-<img src="./theory/theory_v1/page 1.jpg" alt="docs-page-1" align="left"/>
-<img src="./theory/theory_v1/page 2.jpg" alt="docs-page-2" align="center"/>
-<img src="./theory/theory_v1/page 3.jpg" alt="docs-page-3" align="right"/>
-
-<!-- # PROOF
-
-# Universtal algorithm -->
-
-<!-- ![doc-page-1](./theory/theory_v1/page%201.jpg)
-![doc-page-2](./theory/theory_v1/page%202.jpg)
-![doc-page-3](./theory/theory_v1/page%203.jpg)
-![doc-page-1](https://github.com/asiimwemmanuel/my-math/blob/main/theory/theory_v1/page%201.jpg)
-![doc-page-2](https://github.com/asiimwemmanuel/my-math/blob/main/theory/theory_v1/page%202.jpg)
-![doc-page-3](https://github.com/asiimwemmanuel/my-math/blob/main/theory/theory_v1/page%203.jpg)
-[image](http://github.com/asiimwemmanuel/my-math.git/theory/theory_v0.jpg) -->

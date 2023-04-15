@@ -10,21 +10,17 @@ choice = input("\n:: Would you like to carry out Quadratic series analysis or Pa
 if choice == 'Q':
 
     # --------------------------------------input--------------------------------------
-    test_quad = math_tools.my_math()
     print(":: Input the first 3 terms in quadratic series:")
     quad_series = []
     for i in range(3): # map and split method
         quad_series.append(float(input(f"  > Term {i+1}: ")))
     # ----------------------------------------------------------------------------------
-    
-    # The variables decalred below b/c I can't use the variables declared in the function & don't want jargonish printf() parameters
-    # Alternative: could make them attrubutes of the class and call them with test_quad
-    test_α = quad_series[1] - quad_series[0]
-    test_β = quad_series[2] - quad_series[1]
-    test_x = test_β - test_α
+
+	# variables the same as ɑ, β, x
+    main_quad = math_tools.my_math.quad_tools(quad_series[1] - quad_series[0], quad_series[2] - quad_series[1], quad_series[2] - quad_series[1] - quad_series[1] - quad_series[0])
     
     # ----------------------printing standard generalisation----------------------------
-    print(f"\n:: Nth term:\n    {quad_series[0]:.2f} + summation of ({test_x:.2f}x {'+' if test_α-test_x >= 0 else '-'} {abs(test_α-test_x):.2f}) from x = 1 to n-1")
+    print(f"\n:: Nth term:\n    {quad_series[0]:.2f} + summation of ({main_quad.x:.2f}x {'+' if main_quad.x >= 0 else '-'} {abs(main_quad.α-main_quad.x):.2f}) from x = 1 to n-1")
     # ----------------------------------------------------------------------------------
 
     # --------------------------------continuous prompts--------------------------------
@@ -32,21 +28,21 @@ if choice == 'Q':
     posn_to_find = 1
     while posn_to_find > 0:
         posn_to_find = int(input("    Which term would you like to find?: "))
-        print(f"  > Term {posn_to_find}: {test_quad.get_quad_nth_v0(quad_series, posn_to_find)}")
+        print(f"  > Term {posn_to_find}: {main_quad.get_quad_nth_v0(quad_series, posn_to_find)}")
     print('\n:: program terminated')
     # ----------------------------------------------------------------------------------
 
 elif choice == 'P':
 
     # --------------------------------------input--------------------------------------
-    test_res = math_tools.my_math()
+    main_res = math_tools.my_math()
     print("\n:: Input '0' to close the program.")
     res = []
-    n = 1
-    while n > 0:
-        n = int(input(":: How many resistors in parallel?: "))
-        for i in range(n): # map and split method
+    posn = 1
+    while posn > 0:
+        posn = int(input(":: How many resistors in parallel?: "))
+        for i in range(posn): # map and split method
             res.append(int(input(f"  > Resistor {i+1}: ")))
-        print(f"\n:: Total resistance: {test_res.parr_res_v0(res)}\n")
+        print(f"\n:: Total resistance: {main_res.parr_res_v0(res)}\n")
     print("\n:: program terminated")
     # ----------------------------------------------------------------------------------

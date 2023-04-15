@@ -1,6 +1,7 @@
-#include "math_tools.h"
+// work on the U.I. Make it more interactive
+// write tests. tests are important, especially since this is math-y
 
-typedef long double ld;
+#include "math_tools.h"
 
 int main() {
     cout << "\n-----------------------------------------------------------------------------------------------------------------------------\n";
@@ -16,25 +17,21 @@ int main() {
     if(choice == 'Q') {
 
         // --------------------------------------input--------------------------------------
-        math_tools test_quad;
-        vector<ld> quad_series(3);
+        prog quad_series(3);
         cout << "\n:: Input the first 3 terms in quadratic series:\n"; 
         for(int i = 0; i < 3; i++) {
             cout << "  > Term " << i+1 << ": ";
             cin >> quad_series[i];
         }
         // ----------------------------------------------------------------------------------
-        
-        // The variables decalred below b/c I can't use the variables declared in the function & don't want jargonish printf() parameters
-        // Alternative: could make them attrubutes of the class and call them with test_quad
-        ld test_α = quad_series[1] - quad_series[0];
-        ld test_β = quad_series[2] - quad_series[1];
-        ld test_x = test_β - test_α;
+
+        // contructor must remain the same
+        math_tools::quad_tools main_quad(quad_series[1]-quad_series[0], quad_series[2]-quad_series[1], (quad_series[2]-quad_series[1])-(quad_series[1]-quad_series[0]));
 
         // ----------------------printing standard generalisation----------------------------
-        cout << "\n:: Nth term:\n    " << quad_series[0] << " + summation of (" << test_x << "x ";
-        (test_α-test_x >= 0) ? cout << "+ " : cout <<  "- ";
-        cout << abs(test_α-test_x) <<  ") from x = 1 to n-1\n"; 
+        cout << "\n:: Nth term:\n    " << quad_series[0] << " + summation of (" << main_quad.x << "x ";
+        (main_quad.α-main_quad.x >= 0) ? cout << "+ " : cout <<  "- ";
+        cout << abs(main_quad.α-main_quad.x) <<  ") from x = 1 to n-1\n"; 
         // ----------------------------------------------------------------------------------
 
         // --------------------------------continuous prompts--------------------------------
@@ -45,7 +42,8 @@ int main() {
             cin >> posn_to_find;
             if(posn_to_find == 0)
                 break;
-            cout << "  > Term " << posn_to_find << ": " << test_quad.get_quad_nth_v0(quad_series, posn_to_find) << "\n";
+            // Used get_quad_nth_v1_0() with O(1) instead of get_quad_nth_v0_0() with O(n). Watch for errors
+            cout << "  > Term " << posn_to_find << ": " << main_quad.get_quad_nth_v1_0(quad_series, posn_to_find) << "\n";
         };
         cout << "\n:: program terminated\n";
         // ----------------------------------------------------------------------------------
@@ -54,19 +52,19 @@ int main() {
     else if(choice == 'P') {
 
         // --------------------------------------input--------------------------------------
-        math_tools test_res;
+        math_tools main_res;
         cout << "\n:: Input '0' to exit the program\n\n";
         int n = 1;
         while(n > 0) {
             cout << ":: How many resistors in parallel?: ";
             cin >> n;
-            vector<ld> res(n);
+            prog res(n);
             cout << "\n:: Input the resistance of each resistor:\n";
             for(int i = 0; i < n; i++) {
                 cout << "  > Resistor " << i+1 << ": ";
                 cin >> res[i];
             }
-            cout << "\n:: Total resistance: " << test_res.parr_res_v0(res) << "\n\n";
+            cout << "\n:: Total resistance: " << main_res.parr_res_v0(res) << (n > 1 ? " ohms" : "ohm") << "\n\n";
         }
         cout << "\n:: program terminated\n";
         // ----------------------------------------------------------------------------------

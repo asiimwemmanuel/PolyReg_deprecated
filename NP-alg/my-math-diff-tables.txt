@@ -1,0 +1,11 @@
+this is for quartic sequences
+
+2, 7, 17, 35, 61, ...
+
+7 - 2 = 5
+17 - 7 = 10 	10 - 5 = 5
+35 - 17 = 18	18 - 10 = 8 	8 - 5 = 3
+61 - 35 = 26	26 - 18 = 8 	8 - 8 = 0	0 - 3 = -3
+
+Applying the general formula for the above sequence:
+	2 + 5(n-1) + 5(n-1)(n-2)/2 + 3(n-1)(n-2)(n-3)/6 - 3(n-1)(n-2)(n-3)(n-4)/24

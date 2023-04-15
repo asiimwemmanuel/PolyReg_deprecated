@@ -1,11 +1,4 @@
-<style>
-	/* p, li {font-size: 20px;} */
-	img {width: 33.333%;}
-	h2 {text-align: center; font-family: MV Boli;}
-</style>
-
 # 9:56 PM 21/11/22
-
 This project is to modularize my math functions and formulae, specifically *resistance in parallel* and the *general formula for quadratic sequences*.
 
 **Go to ./theory/theory_v1 for documentation**

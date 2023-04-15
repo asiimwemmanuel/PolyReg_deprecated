@@ -23,7 +23,8 @@ This project is to modularize my math functions and formulae, specifically *resi
 
 # 2:09 AM 20/12/22
 
-The next step in this project is the generalisation for any magnitude of series, involving Real Analysis
+The next step in this project is the generalisation for any magnitude of series, involving Real Analysis.
+
 This generalisation should not have compounding complexity ie. it should not have efficiency dependent on the magnitude of the series, hopefully at least O(n^2)
 
 <br/>
@@ -34,10 +35,10 @@ This generalisation should not have compounding complexity ie. it should not hav
 
 > To be soon succeeded by a program analysing series of varying orders, not just quadratic under polynomial complexity
 >
-> *For terms a, b, c in quadratic series;*
+> *For **unique** & **non-repeating** terms a, b, c in quadratic series;*
 > > - *α = b - a* </br>
 > > - *x = c - b - α* </br> <!-- x = c + a - 2b*-->
-> <p style="font-family: Gabriola; font-size: 35px; text-align: center;">nth term = a + ∑ (xi + α - x) from i = 1 to n-1</p>
+> <p style="font-family: Gabriola; font-size: 35px; text-align: center;">nth term = α + ∑ (xi + α - x) from i = 1 to n-1</p>
 > <p style="font-size: 15px; text-align: right;">(proof in the attached documentation)</p>
 
 <br/>
@@ -63,10 +64,28 @@ Also compare the correct formula in the eqtn-ref branch with the control, and th
 
 <br/>
 
+# 11:14 AM 31/03/2023
+
+Investigate "oscillating" progressions eg. 1, 3, 3, 5, 5, 7, 7, ...
+
+Hypothesis: Such series have repeating terms in a supposedly fixed frequency eg. in the above example, f = 2
+
+Note: These have been termed "oscillating" since the table of differences is (supposedly) never-ending and has any given difference past a certain (yet to be determined) threshold obtained via extrapolating or inferring from previous differences in a circular fashion.
+
+In the example, the first array of differences goes between 2 and 0. The inferred array goes between -2 and +2. The next between +4 and -4. The next between -8 and +8. (Note the order of the variables). The next array shall have terms that are twice as large as the previous.
+
+<p style="text-align: center;">Further investigation is required. </p>
+
+<br/>
+
 # DOCUMENTATION
 <img src="./theory/theory_v1/page 1.jpg" alt="docs-page-1" align="left"/>
 <img src="./theory/theory_v1/page 2.jpg" alt="docs-page-2" align="center"/>
 <img src="./theory/theory_v1/page 3.jpg" alt="docs-page-3" align="right"/>
+
+<!-- # PROOF
+
+# Universtal algorithm -->
 
 <!-- ![doc-page-1](./theory/theory_v1/page%201.jpg)
 ![doc-page-2](./theory/theory_v1/page%202.jpg)

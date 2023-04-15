@@ -17,7 +17,7 @@ if choice == 'Q':
     # ----------------------------------------------------------------------------------
 
 	# variables the same as ɑ, β, x
-    main_quad = math_tools.my_math.quad_tools(quad_series[1] - quad_series[0], quad_series[2] - quad_series[1], quad_series[2] - quad_series[1] - quad_series[1] - quad_series[0])
+    main_quad = math_tools.my_math.quad_tools(quad_series[1]-quad_series[0], quad_series[2]-quad_series[1], (quad_series[2]-quad_series[1])-(quad_series[1]-quad_series[0]))
     
     # ----------------------printing standard generalisation----------------------------
     print(f"\n:: Nth term:\n    {quad_series[0]:.2f} + summation of ({main_quad.x:.2f}x {'+' if main_quad.x >= 0 else '-'} {abs(main_quad.α-main_quad.x):.2f}) from x = 1 to n-1")
@@ -28,7 +28,7 @@ if choice == 'Q':
     posn_to_find = 1
     while posn_to_find > 0:
         posn_to_find = int(input("    Which term would you like to find?: "))
-        print(f"  > Term {posn_to_find}: {main_quad.get_quad_nth_v0(quad_series, posn_to_find)}")
+        print(f"  > Term {posn_to_find}: {main_quad.get_quad_nth_v1(quad_series, posn_to_find)}")
     print('\n:: program terminated')
     # ----------------------------------------------------------------------------------
 

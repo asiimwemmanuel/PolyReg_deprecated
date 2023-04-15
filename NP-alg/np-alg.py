@@ -57,10 +57,10 @@ class NP_alg:
 		return term
 
 # ------------------------------------ TESTING ------------------------------------
-
+test = NP_alg()
 # DEMO
 for i in range(10**4):
-	print(i , "->", np_alg([1, 8, 27, 64],i))
+	print(i , "->", test.np_alg([1, 8, 27, 64],i))
 
 # test for k = 1, 2, 3 ... 10**4 (for quick testing).
 # The upper bound changes depending on the type of testing.

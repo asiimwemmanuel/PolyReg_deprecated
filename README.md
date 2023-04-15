@@ -36,8 +36,7 @@ This generalisation should not have compounding complexity ie. it should not hav
 >
 > *For terms a, b, c in quadratic series;*
 > > - *α = b - a* </br>
-> > - *β = c - b* </br>
-> > - *x = β - α* </br> <!-- x = c + a - 2b*-->
+> > - *x = c - b - α* </br> <!-- x = c + a - 2b*-->
 > <p style="font-family: Gabriola; font-size: 35px; text-align: center;">nth term = a + ∑ (xi + α - x) from i = 1 to n-1</p>
 > <p style="font-size: 15px; text-align: right;">(proof in the attached documentation)</p>
 

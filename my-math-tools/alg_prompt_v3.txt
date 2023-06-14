@@ -1,0 +1,121 @@
+ALGORITHM
+
+Given
+	(a list) AND
+		1. (a float) OR
+		2. (a string equal to 'exp') OR
+		3. (a string equal to 'graph')
+Find
+	a. (the extrapolated floating point number at that x position in the list's suggested function) OR
+	b. (the formatted string representing the lowest order polynomial expression in the general form f(n) = an^x + bn^(x-1) + cn^(x-2) + ... + yn^1 + zn^0 that accurately describes the given data points) OR
+	c. (the graph that is plotted using the suggested polynomial function)
+
+(parameter -> output)
+1 -> a, 2 -> b, 3 -> c.
+
+this program is to generate polynomial regression models in order to extrapolate new data from a given set of coordinates.
+it will be debuted in the base version to find the nth term in a progression, where the first few terms and a desired position are given.
+
+it will be peer reviewed by students and professionals in the following fields:
+	economics
+	industrial engineering
+	data analysis
+	stock market analysis
+	applied mathematics and computer science
+make separate fronts for this app for the respective audiences in their expertise.
+in documentation, also encourage contributions to these versions.
+
+when generating different versions, focus on how which aspects of this tool will be applied and ensure ease of use for each version.
+build upon the base method(s) with more advanced niche methods for each field.
+
+for the base 'nth term' version:
+
+PROPERTIES OF THE PARAMETERS
+The list has certain properties.
+
+Firstly, it represents the first terms in a mathematical progression.
+It is also assumed to only contain the necessary elements to uniquely define that progression.
+The elements are assumed to have no noise, and as such, the constructed function should interpolate the points to 100% accuracy.
+
+For example, a progression of f(n) -> n^2 has different lists to show its first few terms, including;
+	[1, 4, 9]
+	[1, 4, 9, 16]
+	[1, 4, 9, 16, 25]
+	...
+
+The first is the list that uniquely identifies the progression with as few elements as possible.
+The others have unnecessary elements.
+Also, note that fewer than 3 elements would not properly encapsulate the given expression f(n) -> n^2.
+
+Secondly, the list's size is assumed to be one more than its order.
+Using the previous example, [1, 4, 9] has 3 elements as its order is 2, being quadratic.
+A list with [1, 8, 27, 64] has 4 elements & is cubic (order of 3), observing the first property.
+It's due to this property that its size can be used to deduce its order.
+
+Thirdly, it is assumed that all the mentioned list criteria are observed. Do not test for them in the input.
+
+As for the second parameter:
+
+If an integer, these are the following criteria:
+	1. it is 1 or greater.
+	2. There is no upper limit to this integer
+	3. if it is within the list, simply return the float at that position.
+	4. it isn't necessarily within the size of the list, and CAN (not has to) be beyond its size.
+
+If a string, these are the following criteria:
+	5. it is 'exp' or 'graph'
+	6. it isn't anything else
+
+test for 1, 3, 5 and 6. Handle accordingly.
+
+The purpose of this version is to:
+	calculate the nth term regardless of the progression order at any position
+	return the simplest (in the general form for the degree) expression to describe f(n)
+	draw the shape of the f(n) graph
+
+You cannot use any separate stored predetermined equations, although it is possible to use calculated equations at run time.
+It is up to the program to deduce the degree of the polynomial, and should still deduce the best fitting curve for the data in other versions.
+That is to say, do not make the degree of the expression a parameter. it should be deduced.
+
+Note that when modelling noisy data, minimise tradeoffs in complexity and accuracy of the fit.
+
+You are free to use theoretical methods that apply, including (but not limited to) Newton's & Lagrange's polynomial or statistical regression.
+Write the function in Python, C++, Fortran, MATLAB, Java and R and name it according to the method used.
+start with python. when I validate the script, convert it into the other languages.
+
+Generate a markdown file with appropriate documentation for the base version algorithm. Include:
+	date & time created [11 AM 1st June 2023]
+	title [Cross-Paradigm Polynomial Regression Tools]
+	author (use "@asiimwemmanuel" if no better option is available)
+	description:
+		(purpose of the app)
+		(versions of the app [base, finance, engineering, apl-math/comp-sci])
+		(techniques/concepts used)
+		(reasons for choices made)
+	step-by-step technical analysis
+	user tutorial
+	possible areas for improvement or alternatives, or weaknesses of the algorithm
+	cited resources eg. websites, articles, books etc.
+
+When choosing the method used, maximize efficiency and optimize performance.
+Give less priority to intuitiveness and focus on the most OPTIMAL choice.
+it's also allowed to use different theories for different languages.
+Consider not only what is generally perceived as more efficient,
+but also the use case and the nature of given data points (as described); values of n, for example, are always spaced by 1 in the list input for the base version.
+
+Minimise the dependency on helper functions and external libraries
+Ensure the implementations in the mentioned languages are complete and translate the selected theory completely
+It isn't a must to first construct the general form expression if the second parameter is an integer.
+It is only necessary to construct such an expression if it will be the output
+Otherwise, you may resort to more efficient methods if they exist
+
+if a general expression is to be outputted, note that it MUST be in the general form, with respect to degree.
+as such, a response of "2n^2 + 0n^1 + 3n^0" is acceptable but "3n^3 + 3" is not.
+Note that all terms in the general form have n with a coeff and an exponent, and the exponent decrements to 0 (i.e. the constant).
+
+use tabs instead of spaces in your code.
+
+EXTRA STUFF
+generate a website and android app based on this algorithm.
+include text boxes for relevant inputs, and include relevant information at the top of the screen
+containerize the project with Docker and include all dependencies (based on the language) in the image

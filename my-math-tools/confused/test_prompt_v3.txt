@@ -1,0 +1,52 @@
+TESTING
+
+make tests for the algorithm using the most suitable language.
+it isn't necessary to generate the tests for every single language version of the algorithm, for now.
+
+there'll be two types: THOROUGH and QUICK
+
+in THOROUGH, the method will be run against 1,000,000 lists.
+in QUICK, the method will be run against 100,000 lists.
+let the user choose between the two.
+
+each list will have a certain polynomial degree (deg), and therefore a certain size in both kinds of testing.
+
+in THOROUGH, a batch is every 10,000 lists.
+this means that the function will be tested against 10,000 linears, 10,000 quadratics, 10,000 cubics ... 10,000 100th polynomial degree series.
+
+in QUICK, every batch is 1,000 lists.
+there'll be 1,000 linears, 1,000 quadratics, 1,000 cubics ... 1,000 100th polynomial degree series.
+
+note that a given batch has lists that all share the same polynomial degree.
+
+all parameter properties still apply.
+
+each batch has a certain general formula of expression:
+f(n) -> an + b
+f(n) -> an^2 + bn + c
+f(n) -> an^3 + bn^2 + cn + d
+
+keep note of the output format for 'exp'.
+the only variables to keep track of are the coeffs and the exponents of each term.
+as an example, "3n^2 + 4" will have the coeff_list = [3, 0, 4].
+note that the example isn't valid output (since it isn't in the general format), but it helps understand exp_list
+notice that the exponent simply reduces by 1 throughout the list.
+
+the first list (base sequence) of any batch will have all coeffs equal to 1. This means that the constant is always 1.
+the first few base sequences are:
+f(n) -> n + 1 [1, 1, 1, 0]
+f(n) -> n^2 + n + 1 [1, 2, 1, 1, 1, 0]
+f(n) -> n^3 + n^2 + n + 1 [1, 3, 1, 2, 1, 1, 1, 0]
+
+it's clear that every even (or 0) index has 1, and every odd index has deg+(1-x)/2 where x is the index
+
+simply randomise values in the exp_list of a batch's base sequence to obtain more expressions.
+once an expression is initialised, make the actual list by evaluating the expression at n = 1, 2, ... deg+1
+feed this list into the algorithm, and test the 3 instances of the 2nd parameter.
+if the second parameter is an int then |actual - expected| < 10**-8. if not, export the parameters, actual and expected.
+if the second parameter is 'exp' then the coeffs and exponents should have a diff < 10**-8 from the expected.
+you may choose to take advantage of string formatting, or you may include a certain cap on precision for these values i.e number of DP's
+
+remember exp_list is a list of floats, not ints
+
+also include memory usage information (in the doc)

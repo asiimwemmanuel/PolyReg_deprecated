@@ -1,0 +1,92 @@
+make tests for the algorithm using the most suitable language.
+it isn't necessary to generate the tests for every single language version of the algorithm
+
+there'll be two types: THOROUGH and QUICK
+
+in THOROUGH, the method will be run against 1,000,000 lists.
+in QUICK, the method will be run against 100,000 lists.
+
+each list will have a certain polynomial degree, and therefore a certain size in both kinds of testing.
+
+in THOROUGH, a batch is every 10,000 lists.
+this means that the function will be tested against 10,000 linears, 10,000 quadratics, 10,000 cubics ... 10,000 100th polynomial degree series.
+
+in QUICK, every batch is 1,000 lists.
+there'll be 100 linears, 100 quadratics, 100 cubics ... 100 100th polynomial degree series.
+
+note that a given batch has lists that all share the same polynomial degree.
+
+all parameter properties still apply.
+also note that ALL numerical variables have a maximum of 10 dp's.
+
+In each batch of 1,000 or 100 progressions, there is a set number of decimal places utilized for each group of lists in a batch.
+for example, in THOROUGH, every 100 lists in a THOROUGH batch will utilize a given decimal point.
+so, for the linear batch, the first 100 will have no utilized decimal points e.g 7.0000000000 ∴ 7 (when stored)
+the next 100 will have 1 utilized point e.g 6.9000000000 ∴ 6.9 (when stored)
+this will continue until the 10th 100, which will utilize 10 decimal points.
+
+For QUICK tests, every 10 of the 100 in the batch will utilize a given decimal point.
+This will still come out to 10 dp's utilized.
+
+there are different ways to proceed in testing, and you will determine the least resource intensive way.
+the first is by determining a base sequence (defined below) and randomising values in its diff table to obtain new lists.
+the second way is by analysing the tendencies of base sequences and finding the polynomial expression for a given base sequence, and randomising that expression's coefficients to determine the other sequences.
+the third is to find the exact number of variables used in the general formula of that certain batch (degree), and go through all combinations of those variables, under certain limits.
+
+to further explain the third option:
+given the general formula for quadratics as f(n) -> an^2 + bn + c, all combinations of the variables a, b and c in the limits + or - 10^6 for THOROUGH and 10^5 for QUICK
+
+the first sequence of a batch is its 'base sequence'.
+this simply means that, in that sequence's diff table d, d[0][0] = 1, d[1][0] = 2, ... d[x][0] = x+1.
+
+for example, the first 3 base sequences are:
+LINEAR [1, 3]
+d = [1, 3],
+	[2]
+
+QUADRATIC [1, 3, 8]
+d = [1, 3, 8],
+	[2, 5],
+	[3]
+
+CUBIC [1, 3, 8, 20]
+d = [1, 3, 8, 20],
+	[2, 5, 12],
+	[3, 7],
+	[4]
+
+SIDENOTE: it is clear that the base sequences are following a certain pattern. include (in the documentation as a research point) what polynomial these terms are converging towards, and if it can be expressed mathematically.
+analysis of base sequences is needed for the second option.
+
+the only predetermined values in d are the leftmost figures. all others within the diff table are based on those.
+
+OPTION 1 DETERMINING BASE SEQUENCE FROM DIFF TABLE:
+go through a given list.
+if there is no element at position q when there's supposed to be, then that element is d[p+1][q-1]+d[p][q-1] where p is the position of the list in d.
+whether or not there should be an element at a certain position depends on the size of d and the position of the list in d.
+in a list at index p in a d with size x, the list should have a size of x-p. therefore, to fill that list with values, the algorithm is used.
+the algorithm starts from the very end of d (which always has one element), and works backwards. the goal is to get the elements in the top row (ie the actual list whose diff table has been calculated), which can then be fed into the function.
+it isn't a necessity to use this in the actual code if a better response exists, as long as it accurately makes the appropriate base sequence.
+if the above algorithm is used, it should be run whenever a base sequence is needed (after every batch).
+it should be given the old base sequence diff table to generate the next one, meaning there is only ever one table that is simply updated over time.
+
+each list will be inputted thrice:
+	once when the second parameter is:
+		an integer (to output the value at position n)
+		'exp' (to output the polynomial expression of the nth term)
+		'graph' (to output the appropriate graph)
+
+if the function does not output as expected, export the list, parameters given, expected and actual output to a log file called failed_tests.log
+in the case of the graph, do not include outputs.
+
+in the batch, the other 9,999 lists are got by randomising the values in the base sequence's diff table.
+make sure that the decimal places utilized increment with each list.
+this means in every base sequence, there are no utilized decimal places i.e all numbers are whole.
+in the 2nd list of a batch, there's 1 dp that is utilized.
+in the xth list (of the 10,000), there are x-1 dp's utilized.
+
+NOTE: to utilize means to be valid to be randomised to a denary digit, and therefore have a possibility of being non-zero.
+
+if dp's aren't used, then they shouldn't be stored
+if some of the numbers I have used are inaccurate (when comparing THOROUGH and QUICK), 
+default to the fact that anything in QUICK is 10% of THOROUGH (except the number of orders tested, still 100)

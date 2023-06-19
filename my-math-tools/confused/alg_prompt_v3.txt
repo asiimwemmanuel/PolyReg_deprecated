@@ -1,13 +1,24 @@
-ALGORITHM
+OVERVIEW
+
+this program is designed to construct accurate polynomial fits for inputted data and aid in regressional analysis.
+this data may be either noisy or accurate and will follow certain patterns or constraints.
+it is meant to be applied in: TCS & numerical analysis, econometrics and statistical analysis, big data, market analysis and so on.
+due to the many discrepancies that arise when making tools relevant and specific to numerous fields simultaneously, I plan to make base generalised tool(s) that can be applied to all the above (and possibly more)
+there will be a main branch/repo of the project and smaller branches designed to specialise the tools to the relevant fields.
+the rest of this prompt is largely relevant to this base version and not necessarily applicable to all versions.
+
+head your response with a short note on topics and/or resources I should use to better equip myself in this project.
+
+BASE ALGORITHM
 
 Given
 	(a list) AND
-		1. (an integer not less than 1) OR
+		1. (a float) OR
 		2. (a string equal to 'exp') OR
 		3. (a string equal to 'graph')
 Find
-	a. (the floating point number at that integer position in the list's interpolated progression) OR
-	b. (the formatted string that is the lowest order polynomial expression in the general form f(n) = an^x + bn^(x-1) + cn^(x-2) + ... + yn^1 + zn^0) OR
+	a. (the floating point number at that parameter position in the data's underlying function ie. the y-value at that x-value) OR
+	b. (the formatted string that is the lowest order polynomial expression representing the data's function in the general form f(n) = an^x + bn^(x-1) + ... + zn^0) OR
 	c. (the graph that is plotted using the suggested polynomial expression)
 
 (parameter -> output)
@@ -16,9 +27,12 @@ Find
 PROPERTIES OF THE PARAMETERS
 The list has certain properties.
 
-Firstly, it represents the first terms in a mathematical progression that can be accurately represented as a polynomial.
+Firstly, it represents the first terms in a mathematical progression that can be accurately represented as a polynomial (only in this base version).
+Note that this base function may get various data points that may not always represent such progressions.
+you may only assume this trait to demonstrate functionality, as a test run and not to be maintained in all versions
+
 As such, it is not expected to handle exponential nor geometric sequences.
-It is also assumed to only contain the necessary elements to uniquely define that progression.
+It is also assumed to contain AT LEAST the necessary elements to uniquely define that progression.
 
 For example, a progression of f(n) -> n^2 has different lists to show its first few terms, including;
 	[1, 4, 9]
@@ -27,8 +41,9 @@ For example, a progression of f(n) -> n^2 has different lists to show its first 
 	...
 
 The first is the list that uniquely identifies the progression with as few elements as possible.
-The others have unnecessary elements.
+The others have unnecessary elements, although are still valid inputs.
 Also, note that fewer than 3 elements would not properly encapsulate the given expression f(n) -> n^2.
+Don't test for this. It's assumed.
 
 Secondly, the list's size is one more than its order.
 Using the previous example, [1, 4, 9] has 3 elements as its order is 2, being quadratic.
@@ -40,11 +55,11 @@ Not all the above criteria are necessary for the program to function, but they m
 
 As for the second parameter:
 
-If an integer, these are the following criteria:
-	1. it is 1 or greater.
-	2. There is no upper limit to this integer
+If a float, these are the following criteria:
+	1. it is 1 or greater (only for the nth term application).
+	2. There is no upper limit to this float
 	3. if it is within the list, simply return the float at that position.
-	4. it isn't necessarily within the size of the list, and CAN (not has to) be beyond its size.
+	4. it isn't necessarily within the size of the list, and CAN (not has to) be beyond its size (either).
 
 If a string, these are the following criteria:
 	5. it is 'exp' or 'graph'
@@ -52,15 +67,10 @@ If a string, these are the following criteria:
 
 test for 1, 3, 5 and 6 with conditionals. Handle accordingly.
 
-The purpose of this program, if not obvious thus far, is to do the following:
-	calculate the nth term regardless of the progression order at any position via interpolation
-	return the simplest (in the general form for the degree) expression to describe f(n)
-	draw the shape of the f(n) graph
-
 You cannot use any separate stored predetermined equations, although it is possible to use calculated equations at run time if necessary.
 
 You are free to use theoretical methods that apply, including (but not limited to) Newton's or Lagrange's polynomials.
-Write the function in Python. Include C++, C#, Java, Kotlin, Swift & JavaScript versions when I confirm your first script.
+Write the function in Python. Include C++, MATLAB, R and Ruby versions when I confirm your first script.
 Name it according to the method used.
 
 Generate a markdown file with appropriate documentation for the algorithm. Include:
@@ -68,8 +78,8 @@ Generate a markdown file with appropriate documentation for the algorithm. Inclu
 	title
 	author (use "@asiimwemmanuel" if no better option is available)
 	description:
-		(techniques/concepts/theories used)
-		(reasons for choices made)
+	    (techniques/concepts/theories used)
+        (reasons for choices made)
 	step-by-step technical analysis
 	user tutorial
 	possible areas for improvement or alternatives and weaknesses of the algorithm
@@ -79,12 +89,12 @@ When choosing the method used, maximize efficiency and optimize performance.
 Give less priority to intuitiveness and focus on the most OPTIMAL choice.
 it's also allowed to use different theories for different languages later.
 Consider not only what is generally perceived as more efficient,
-but also the use case and the nature of given data points (as described); values of n, for example, are always spaced by 1 in the list input.
+but also the use case and the nature of given data points (as described); values of n, for example, are always spaced by 1 in the list input (for this application).
 
-Minimise the dependency on helper functions and external libraries, but use them if the tradeoff in readability, scalability and maintenance isn't worth it.
+Minimise the dependency on helper functions and external libraries, but use them if the tradeoff in readability, scalability and maintenance deems it.
 Ensure the implementations in the mentioned languages are complete and translate the selected theory completely, when I confirm the first one.
 
-It isn't a must to first construct the general form expression if the second parameter is an integer.
+It isn't a must to first construct the general form expression if the second parameter is a float.
 It is only necessary to construct such an expression if it will be the output.
 Otherwise, you may resort to more efficient methods if they exist.
 
@@ -93,9 +103,9 @@ As such, a response of "2n^2 + 0n^1 + 3n^0" is acceptable but "3n^3 + 3" is not.
 Note that all terms in the general form have n with a coeff and an exponent, and the exponent decrements to 0 (i.e. the constant).
 Therefore, it is only necessary to store the list of coeffs to be used and output the exponent as deg+(1-x)/2 where x is the index
 
-EXTRA STUFF
-generate a website and android app based on this algorithm.
-include text boxes for relevant inputs, and include relevant information at the top of the screen
-containerize the project with Docker and include all dependencies (based on the language) in the image
+minimise assumptions about the data or its structure in applications outside the nth term front.
 
-Note that when I confirm the first implementation, I will supply the official Python script that you will translate to the mentioned languages.
+remember that not all the listed characteristics will be maintained all the time for all applications of this base function.
+include a confidence score (in percentage) every time an extrapolation is made based on how much error is estimated for the given value.
+
+feel free to suggest functionalities I haven't considered above
